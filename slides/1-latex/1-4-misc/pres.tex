@@ -1,0 +1,228 @@
+\documentclass[11pt]{beamer}
+% \usetheme{Copenhagen}
+\usetheme{PaloAlto}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{navigation symbols}{% 
+\insertslidenavigationsymbol \insertframenavigationsymbol \insertsubsectionnavigationsymbol \insertsectionnavigationsymbol \insertdocnavigationsymbol \insertbackfindforwardnavigationsymbol \hspace{1em}%
+\usebeamerfont{footline} 	\raisebox{1.2pt}[0pt][0pt]{\insertframenumber/\inserttotalframenumber}%
+}
+\logo{\includegraphics[width=1.4cm]{fac-logo-w}} 
+\institute{Facultad de Ciencias \\ Universidad Nacional Autónoma de México} 
+\setbeamertemplate{caption}[numbered]
+
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\lstset{language=[LaTeX]TeX,
+texcsstyle=*\bf\color{blue},
+numbers=none,
+breaklines=true,
+keywordstyle=\color{darkgreen},
+literate=*{\{} {{\textcolor{darkgreen}\{}}{1}%
+			 {\}} {{\textcolor{darkgreen}\}}}{1}%
+			 {[} {{\textcolor{darkgreen}[}}{1}%
+			 {]} {{\textcolor{darkgreen}]}}{1}%
+			 {\$} {{\textcolor{darkgreen}\$}}{1},
+commentstyle=\color{red},
+frame=none,
+tabsize=2,
+backgroundcolor=\color{lightgrey}
+}
+
+\title{Introducci\'on a \LaTeX}
+\subtitle{Cosas útiles}
+\author{Carlos Espinosa}
+\date{Agosto, 2022} 
+% \subject{} 
+
+\justifying
+\begin{document}
+	\begin{frame}{}
+		\titlepage
+	\end{frame}
+
+	\begin{frame}{Índice}
+		\tableofcontents
+	\end{frame}
+
+	\section{Comentarios iniciales}
+	\begin{frame}[containsverbatim]{Comentarios iniciales}
+		\begin{itemize}
+			\justifying
+			\item Existen muchas herramientas para usar en \LaTeX\ así como opciones. 
+			Desafortunadamente, un curso completo de \LaTeX\ nos llevaría casi un semestre.
+			\item En esta presentación veremos algunas cosas útiles que complementan 
+			las presentaciones anteriores.
+			\item Recordar que algunas características dependen del tipo de documento 
+			que eligan hacer.
+		\end{itemize}
+\end{frame}
+	\section{Características varias}
+	\subsection{Nuevos párrafos}
+	\begin{frame}[containsverbatim]{Nuevas l\'ineas y p\'arrafos}
+		Existen distintas maneras para definir un nuevo párrafo o nueva línea:
+		\begin{itemize}
+			\justifying
+			\item Basta con dejar una línea en blanco entre párrafos.
+			\item El comando \textbf{\textbackslash newline}
+			\item El comando \textbf{\textbackslash \textbackslash}
+			\item El comando \textbf{\textbackslash par}
+		\end{itemize}
+\end{frame}
+	\subsection{Secciones y subsecciones}
+	\begin{frame}[containsverbatim]{Agregando secciones}
+	\justifying	
+			Podemos organizar nuestro texto por secciones y sub secciones (incluso un tercer nivel subsub secciones). Tambi\'en podemos crear cap\'itulo. Los comandos para las distintas secciones son:
+			\begin{itemize}
+				\item \textbackslash chapter{...}
+				\item \textbackslash section{...}
+				\item \textbackslash subsection{...}
+				\item \textbackslash subsubsection{...}
+			\end{itemize}
+			Existe un comando que crear\'a de forma autom\'atica un \'indice basandos\'e en todas las divisiones que hayamos hecho a lo largo del texto.
+			\begin{lstlisting}
+\tableofcontents	
+			\end{lstlisting}
+	\end{frame}
+	\subsection{Tablas}
+	\begin{frame}[containsverbatim]{Creando tablas}
+		\justifying
+			La creaci\'on de tablas en \LaTeX\ es más sencilla de lo que parece.
+			Para definir una tabla utilizaremos el \emph{entorno} \textit{tabular}.
+			Por ejemplo: 
+			\begin{lstlisting}[basicstyle=\small]
+\begin{center}
+\begin{tabular}{ c c c }
+ cell1 & cell2 & cell3 \\ 
+ cell4 & cell5 & cell6 \\  
+ cell7 & cell8 & cell9    
+\end{tabular}
+\end{center}			\end{lstlisting}
+
+Nótese que aquí hemos definido el numero de columnas y la alineación del texto en ellas
+desde el inicio. El número de filas se define de acuerdo al contenido de la tabla.
+\end{frame}	
+
+\begin{frame}[containsverbatim]{A\~nadiendo bordes}
+			Si queremos a\~nadir bordes, el comando se transforma en:
+			\begin{lstlisting}[basicstyle=\small]
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ cell1 & cell2 & cell3 \\ 
+ cell4 & cell5 & cell6 \\ 
+ cell7 & cell8 & cell9
+ \hline
+\end{tabular}
+\end{center}
+			\end{lstlisting}
+Nótese que las líneas que separan a las columnas se definen desde el inicio de la 
+tabla. Las líneas que separan las filas se hace manualmente con el comando:
+\begin{lstlisting}
+\hline
+\end{lstlisting}
+\end{frame}
+\begin{frame}[containsverbatim]{Agregando una descripción y referencias}
+			Al igual que con las imágenes, y realmente con cualquier objeto de \LaTeX, podemos agregarle un t\'itulo y una etiqueta para referenciar una tabla:
+			\begin{lstlisting}[basicstyle=\tiny]
+Tabla \ref{tabla:datos} es un ejemplo de como referencias elementos de \LaTeX.
+ 
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c c||} 
+ \hline
+ Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+ \hline\hline
+ 1 & 6 & 87837 & 787 \\ 
+ 2 & 7 & 78 & 5415 \\
+ 3 & 545 & 778 & 7507 \\
+ 4 & 545 & 18744 & 7560 \\
+ 5 & 88 & 788 & 6344 \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{Tabla para probar t\'itulos y referencias}
+\label{table:datos}
+\end{table}
+			\end{lstlisting}
+\end{frame}
+\subsection{Bibliografía}
+\begin{frame}[containsverbatim]{Creando una bibliografía}
+	\justifying
+	\LaTeX\ provee herramientas básicas para el uso de una bibliografía en 
+	nuestros documentos. Esta herramienta se llama Bib\TeX. Aunque existen paquetes 
+	especializados que nos permitirán usar Bib\TeX\ con algunas mejoras.
+
+	Una bibliografía en \LaTeX\ se basa en entrada bibliográficas. Para esto, podemos 
+	agregarlas directamente al documento.
+	
+	\begin{lstlisting}
+\begin{thebibliography}{4}
+\bibitem{texbook}
+Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
+
+\bibitem{lamport94}
+Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
+Wesley, Massachusetts, 2nd ed.
+\end{thebibliography}		
+	\end{lstlisting}
+\end{frame}
+\begin{frame}[containsverbatim]{Creando una bibliografía}
+	\justifying
+	\begin{lstlisting}[basicstyle=\small]
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{natbib}
+\begin{document}
+Aqui agregamos una referencia \cite{lamport94} y aqui agregamos la otra \cite{texbook}.
+\begin{thebibliography}{4}
+\bibitem{texbook}
+Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
+\bibitem{lamport94}
+Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
+Wesley, Massachusetts, 2nd ed.
+\end{thebibliography}
+
+\end{document}	
+	\end{lstlisting}
+\end{frame}
+\begin{frame}[containsverbatim]{Creando una bibliografía}
+	\justifying
+
+	Agregar en el documento las entradas bibliográficas tiene ciertas desventajas,
+	por ejemplo, si se require reutilizar la bibliografía con otros estilos, 
+	o en otro orden o en otros documentos tendríamos que modificar las entradas.
+
+	Para evitar estos inconvenientes se prefiere usar los archivos de datos de 
+	entradas bibliográficas (con terminación .bib).
+
+	En este archivo se encuentran todas las entradas bibliográficas que podríamos 
+	necesitar. Se guardan cada uno de los datos con su propio identificador lo que
+	que hace que podamos cambiar de estilo fácilmente.
+	Se debe de tomar en cuenta que el orden de compilación debe de ser: pdflatex, bibtex, pdflatex, pdflatex.
+	La bibliografía se debe de agregar con el comando \textbf{\textbackslash bibliography\{name\}}
+\end{frame}
+\section{Comentarios finales}
+\begin{frame}[containsverbatim]{Comentarios Finales}
+	\justifying
+	\begin{itemize}
+		\item \LaTeX\ es una poderosa herramienta con la cual se pueden crear toda clase de 
+		\item Los paquetes nos presentan muchas opciones para cualquier cosa que necesitemos.
+		\item Su uso puede requerir una curva de aprendizaje diferente a la de otros procesadores de texto.
+		\item Una vez que se tiene cierta experiencia, su uso puede resultar bastante cómodo.
+	\end{itemize}
+\end{frame}
+\end{document}

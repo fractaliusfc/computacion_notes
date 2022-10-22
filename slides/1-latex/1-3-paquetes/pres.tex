@@ -1,0 +1,350 @@
+\documentclass[11pt]{beamer}
+% \usetheme{Copenhagen}
+\usetheme{PaloAlto}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{navigation symbols}{% 
+\insertslidenavigationsymbol \insertframenavigationsymbol \insertsubsectionnavigationsymbol \insertsectionnavigationsymbol \insertdocnavigationsymbol \insertbackfindforwardnavigationsymbol \hspace{1em}%
+\usebeamerfont{footline} 	\raisebox{1.2pt}[0pt][0pt]{\insertframenumber/\inserttotalframenumber}%
+}
+\logo{\includegraphics[width=1.4cm]{fac-logo-w}} 
+\institute{Facultad de Ciencias \\ Universidad Nacional Autónoma de México} 
+\setbeamertemplate{caption}[numbered]
+
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\lstset{language=[LaTeX]TeX,
+texcsstyle=*\bf\color{blue},
+numbers=none,
+breaklines=true,
+keywordstyle=\color{darkgreen},
+literate=*{\{} {{\textcolor{darkgreen}\{}}{1}%
+			 {\}} {{\textcolor{darkgreen}\}}}{1}%
+			 {[} {{\textcolor{darkgreen}[}}{1}%
+			 {]} {{\textcolor{darkgreen}]}}{1}%
+			 {\$} {{\textcolor{darkgreen}\$}}{1},
+commentstyle=\color{red},
+frame=none,
+tabsize=2,
+backgroundcolor=\color{lightgrey}
+}
+
+\title{Introducci\'on a \LaTeX}
+\subtitle{Usando paquetes}
+\author{Carlos Espinosa}
+\date{Agosto, 2022} 
+% \subject{} 
+
+\justifying
+\begin{document}
+	\begin{frame}{}
+		\titlepage
+	\end{frame}
+
+	\begin{frame}{Índice}
+		\tableofcontents
+	\end{frame}
+
+	\section{Comentarios iniciales}
+	\subsection{Estilo de letra}
+	\begin{frame}[containsverbatim]{Estilos de letras}
+		\begin{itemize}
+			\item Para poner las letras en \textbf{negritas} se utiliza el siguiente comando:
+			
+			\lstinline!\textbf{ejemplo}!
+			
+			\item Para poner las letras en \textit{cursiva} se utiliza el siguiente comando:
+			
+			\lstinline!\textit{ejemplo}!
+			
+			\item Para poner las letras \underline{subrayadas} se utiliza el siguiente comando:
+			
+			\lstinline!\underline{ejemplo}!
+			
+			\item Para poner las letras con \emph{énfasis} se utiliza el siguiente comando:
+			
+			\lstinline!\emph{ejemplo}!
+			
+			Este último depende del contexto dentro del que se use
+		\end{itemize}
+\end{frame}
+	\subsection{Caracteres especiales}
+		\begin{frame}[containsverbatim]{Caracteres especiales}
+			Algunos caracteres se tienen que escribir de forma especial.
+			
+			Para obtener \# , escribe \lstinline!\#!
+			
+			Para obtener \$ , escribe \lstinline!\$!
+			
+			Para obtener \% , escribe \lstinline!\%!
+			
+			Para obtener \& , escribe \lstinline!\&!
+			
+			Para obtener \_ , escribe \lstinline!\_!
+			
+			Para obtener \{ o \} , escribe \lstinline!\{! o \lstinline!\}!
+			
+			Para obtener \~\ , escribe \lstinline!\~\!
+			
+			Para obtener \^\ , escribe \lstinline!\^\!
+			
+			Para obtener \textbackslash , escribe \lstinline!\textbackslash!
+			
+\end{frame}
+			\begin{frame}[containsverbatim]{¿Y los acentos?}
+				Dado que \LaTeX\ fue pensando inicialmente para escribir documentos 
+				en inglés, no se tiene alguna instrucción para que tome en cuenta los acentos.
+
+				Por lo tanto, para poder poner acentos, necesitamos escribir \lstinline!\'!:
+				Por ejemplo:
+				\begin{lstlisting}
+coraz\'on
+\'ultimo
+\'enfasis
+				\end{lstlisting}
+				
+				Esta es la forma internacional de poner acentos, aunque existen
+				\emph{paquetes} que nos proporcionarán las herramientas para 
+				escribir los acentos como estamos acostumbrados.
+	\end{frame}
+
+	\section{Paquetes}
+		\begin{frame}[containsverbatim]{¿Qué es un paquete?}
+			\begin{itemize}
+				\item Un paquete es un conjunto de instrucciones que nos permiten 
+				agregar funcionalidades a \LaTeX.
+				\item Los paquetes son de uso libre y, generalmente, se puede encontrar 
+				ayuda de la comunidad por si un error es encontrado.
+				\item Cualquier persona puede crear un paquete y publicarlo.
+				\item Es difícil decir cuantos paquetes existen actualmente dado 
+				que no existe una base de paquetes que incluya todos.
+				\item Para usar un paquete se debe de indicar el nombre, y las opciones
+				correspondientes, al inicio del documento con la instrucción 
+			\end{itemize}
+			
+			\begin{lstlisting}
+\usepackage[opciones]{paquete}
+			\end{lstlisting}
+		\end{frame}
+	\subsection{Utilidades para idiomas}	
+
+		\begin{frame}[containsverbatim]{Para los acentos...}
+			Aunque actualmente ya no se necesita un paquete para poner acentos, antes 
+			se necesitaba del paquete \texttt{inputenc}.	
+
+			Para usarlo se debe incluir la siguiente instrucción después de definir 
+			la clase de documento:
+
+			\begin{lstlisting}
+\usepackage[utf8]{inputenc}
+			\end{lstlisting}
+			Por lo tanto el ejemplo completo es:
+			\begin{lstlisting}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\begin{document}
+...
+\end{document}
+			\end{lstlisting}
+			Aunque ya no es necesario para poner acentos, puede ser útil para otros 
+			símbolos que estén considerados dentro de la codificación \texttt{UTF-8}.
+	    \end{frame}	
+		\begin{frame}[containsverbatim]{¿\LaTeX\ no es amigable con otros idiomas?}
+		Probemos el siguiente ejemplo:
+			\begin{lstlisting}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\author{Carlos Espinosa}
+\title{Primer Documento}
+\date{\today}
+\begin{document}
+\maketitle
+Hola mundo
+\end{document}
+			\end{lstlisting}
+		Para que \LaTeX\ ponga en otro idioma todas las palabras predefinidas, usaremos 
+		el paquete \texttt{babel} con la instrucción
+			\begin{lstlisting}
+\usepackage[spanish]{babel}
+			\end{lstlisting}
+		\end{frame}
+	\subsection{Propiedades de la página}
+		\begin{frame}[containsverbatim]{¿Comó puedo cambiar los márgenes de la página?}
+			Cuando definimos el tipo de documento que queremos escribir, \LaTeX\ 
+			carga los valores predeterminados para ese tipo de documento. Sin embargo,
+			estos pueden ser muy altos, o bajos, para algunos usuarios.
+
+			Existen varias maneras para cambiar los márgenes, otras propiedades de las 
+			hojas, de nuestro documento. En este caso, la más sencilla es usar el paquete \texttt{geometry}.
+			\begin{lstlisting}
+\usepackage{geometry}
+			\end{lstlisting}
+
+		\end{frame}
+		\begin{frame}[containsverbatim]{¿Comó puedo cambiar los márgenes de la página?}
+			Posteriormente definiremos todas las opciones que necesitemos
+			\begin{lstlisting}[basicstyle=\footnotesize]
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\geometry{letterpaper,top=2cm,left=2cm,right=2cm,bottom=2cm}
+\author{Carlos Espinosa}
+\title{Primer Documento}
+\date{\today}
+\begin{document}
+\maketitle
+% texto
+\end{document}
+			\end{lstlisting}			
+
+		\end{frame}
+	\subsection{Imágenes}
+		\begin{frame}[containsverbatim]{Y las figuras?}
+			\begin{itemize}
+				\item Para incluir figuras/imagenes en un documento necesitamos del paquete \texttt{graphicx}.
+			\item Nótese de la \textbf{x} al final. 
+			\item Todas las imágenes deben de estar en la misma carpeta
+			que el archivo \emph{.tex}. 
+			\item El formato de las imágenes debe de estar en \textbf{PNG} o \textbf{JPG}.
+			\item \LaTeX\ admite otro tipo de archivos pero para esto se deben de usar otras opciones.
+			\end{itemize}
+			\begin{lstlisting}
+\usepackage{graphicx}
+			\end{lstlisting}
+			
+		\end{frame}
+		\begin{frame}[containsverbatim]{Y las figuras?}
+			\begin{lstlisting}
+\documentclass{article}
+\usepackage{graphicx}
+\author{Carlos Espinosa}
+\title{Primer Documento}
+\date{\today}
+\begin{document}
+\maketitle
+Una region de formacion estelar, tambien conocida como region HII, es un gas ionizado
+por estrellas jovenes y masivas
+
+\includegraphics[scale=0.5]{orion.jpg}
+
+Podemos ver a la nebulosa de Orion arriba.
+\end{document}
+			\end{lstlisting}			
+		\end{frame}
+		\begin{frame}[containsverbatim]{Y las figuras?}
+			\begin{lstlisting}[basicstyle=\footnotesize]
+\documentclass{article}
+\usepackage{grpahicx}/viewer.html
+\author{Carlos Espinosa}
+\title{Primer Documento}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.25\textwidth]{orion.jpg}
+	\caption{Nebulosa de Orion}
+	\label{fig:neb}
+\end{figure}
+En la figura \ref{fig:neb} podemos ver a la nebulosa de orion. En la p\'agina \pageref{fig:neb} se muestra una region HII.
+\end{document}
+			\end{lstlisting}			
+		\end{frame}
+	\subsection{Modo Matemático}
+		\begin{frame}[containsverbatim]{Escribiendo ecuaciones matemáticas}
+			\justifying
+			Una de las mayores ventajas de usar \LaTeX\ es el modo matemático. 
+			Uno de los mejores paquetes para escribir ecuaciones matemáticas es 
+			\textbf{amsmath}. Este incluye todo lo necesario para escribir casi todas 
+			las ecuaciones que se nos ocurran. Sin embargo, para complementar a este paquete 
+			es buena idea que agreguemos el paquete \textbf{amsfonts}.
+
+			\LaTeX\ proporciona dos \emph{modos} para escribir ecuaciones matemáticas:
+			\begin{itemize}
+				\justifying
+				\item \textit{inline}: es el modo utilizado para escribir ecuaciones que son 
+				parte de un párrafo.
+				\item \textit{display}: es el modo utilizado para escribir ecuaciones que 
+				no son parte de un párrafo, es decir, que es puesta en una línea nueva.
+			\end{itemize}
+		\end{frame}
+		\begin{frame}[containsverbatim]{Modo matemático inline}
+			\justifying
+			Para escribir ecuaciones en modo inline, necesitamos poner nuestra expresión entre uno de los 
+			siguientes delimitadores:
+			\begin{itemize}
+				\justifying
+				\item \textbackslash(...\textbackslash) 
+				\item \$...\$
+				\item \textbackslash begin\{math\}...\textbackslash\{math\}
+			\end{itemize}
+			Por ejemplo:
+			\begin{lstlisting}[basicstyle=\footnotesize]
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\begin{document}
+En f\'isica, la equivalencia entre masa y energ\'ia est\'a dada por la ecuaci\'on
+$E=mc^2$, descubierta en 1905 por Albert Einstein.
+\end{document}
+			\end{lstlisting}			
+		\end{frame}
+
+		\begin{frame}[containsverbatim]{Modo matemático display}
+			\justifying
+			Hay dos maneras distintas en el modo display para mostrar las ecuaciones:
+			\begin{itemize}
+				\item Numeradas: \textbackslash begin\{equation\}...\textbackslash\{equation\}
+				\item No numerada: \textbackslash[...\textbackslash]
+			\end{itemize}
+			\begin{lstlisting}[basicstyle=\footnotesize]
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\begin{document}
+En f\'isica, la equivalencia entre masa y energ\'ia est\'a dada por la ecuaci\'on
+\[E=mc^2\]
+descubierta en 1905 por Albert Einstein. En unidades naturales ($c=1$), la formula se 
+expresa como:
+\begin{equation}
+	E=m
+\end{equation}
+\end{document}
+			\end{lstlisting}			
+		\end{frame}
+    \section{Comentarios Finales}
+		\begin{frame}[containsverbatim]{Comentarios finales}
+			\begin{itemize}
+			\justifying
+			\item Los paquetes de \LaTeX\ nos permiten agregar funciones extra que nos 
+			permiten crear documentos complejos.
+		    
+			\item Recordar que para usar un paquete se tiene que usar la instrucción: 
+			\begin{lstlisting}
+\usepackage[opciones]{paquete}
+			\end{lstlisting}
+			donde el nombre debe de ser exactamente el nombre del paquete.
+
+			\item Cada paquete tiene sus propias opciones. Es bueno consultar el manual del paquete 
+			en cuestión para saber como usarlo.
+			\item Es bueno probar un paquete a la vez. Aunque es raro, a veces algunos paquetes 
+			se contraponen.
+			\item Tener en cuenta que cada paquete se tiene que cargar cuando se inicia la 
+			compilación del archivo. Entre mas paquetes se usen, mas tardado será el tiempo
+			de compilación.
+			\end{itemize}
+		\end{frame}
+\end{document}

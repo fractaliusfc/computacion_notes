@@ -1,0 +1,209 @@
+\documentclass[11pt]{beamer}
+% \usetheme{Copenhagen}
+\usetheme{PaloAlto}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+\logo{\includegraphics[width=1.4cm]{fac-logo-w}} 
+\institute{Facultad de Ciencias \\ Universidad Nacional Autónoma de México} 
+\setbeamertemplate{caption}[numbered]
+
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\lstset{language=[LaTeX]TeX,
+texcsstyle=*\bf\color{blue},
+numbers=none,
+breaklines=true,
+keywordstyle=\color{darkgreen},
+literate=*{\{} {{\textcolor{darkgreen}\{}}{1}%
+			 {\}} {{\textcolor{darkgreen}\}}}{1}%
+			 {[} {{\textcolor{darkgreen}[}}{1}%
+			 {]} {{\textcolor{darkgreen}]}}{1}%
+			 {\$} {{\textcolor{darkgreen}\$}}{1},
+commentstyle=\color{red},
+frame=none,
+tabsize=2,
+backgroundcolor=\color{lightgrey}
+}
+
+\title{Introducci\'on a \LaTeX}
+\author{Carlos Espinosa}
+\date{Agosto, 2022} 
+% \subject{} 
+
+\justifying
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+
+	\begin{frame}
+		\tableofcontents
+	\end{frame}
+
+	\section{Introducción}
+	\subsection{¿Qu\'e es \LaTeX?}	
+
+		\begin{frame}{¿Qu\'e es \LaTeX?}
+			\begin{itemize}
+			\justifying
+			\item \LaTeX\ es un \textit{software} para la preparación de documentos 
+			usado por académicos, investigadores, científicos, matemáticos, y 
+			otros profesionales.
+
+			\item A diferencia de otros editores (Microsoft Word, Google Docs, etc) que 
+			se basan en el principio \textbf{WYSIWYG} (What You See Is What You Get), 
+			\LaTeX\ se basa en funciones en documentos de texto plano que, junto a reglas 
+			tipográficas, se compilan para generar documentos PDF.
+			
+			\item En el documento de texto plano se escribe el contenido, anotaciones y 
+			comandos que controlan como se muestran diversos elementos. El resultado 
+			es poder generar un documento de apariencia profesional.
+
+			\item La creación de \textit{plantillas} en \LaTeX\ es sencillo, lo que 
+			permite que cualquier persona pueda crear documentos complejos.
+			\end{itemize}
+		\end{frame}	
+	\subsection{Historia de \LaTeX}
+		\begin{frame}{Un poco de Historia}
+			
+			\begin{itemize}
+			\justifying
+			\item Donald Knuth inició el desarrollo de \TeX\ a finales de los 60s con el objetivo de 
+			crear un programa que pudiera acomodar el texto y ecuaciones matemáticas 
+			fácilmente. 
+			\item \TeX\ nació en los 70s con un gran control y flexibilidad para la creación 
+			de documentos. Sin embargo estas características hacían que \TeX\ fuera muy 
+			complejo.
+			\item A mediados de los 80s, Leslie Lamport introdujo características y \textit{macros} que hacían 
+			mucho más sencillo el uso de \TeX. A partir de este momento se creo lo que conocemos como 
+			\textit{Lamport-}\TeX\ o \LaTeX.
+			\end{itemize}
+	
+		\end{frame}
+
+	\subsection{Por qu\'e aprender \LaTeX?}	
+
+		\begin{frame}{¿Por qu\'e aprender \LaTeX?}
+			\begin{itemize}
+				\item Es la mejor opción para la creación de cualquier documento 
+				científico y técnico por sus herramientas especializadas para 
+				generar documentos de alta calidad.
+				\item \LaTeX\ provee una manera sencilla de escritura de ecuaciones matemáticas.
+				\item No se tiene que preocupar por el formato del documento, solo del contenido.
+				\item Plantillas que permiten que los autores no se tengan que preocupar por 
+				cuestiones técnicas.
+				\item Se pueden generar fácilmente referencias, índices, notas al pie de página y 
+				citas.
+				\item El documento es un documento de texto plano. 
+				\item Se puede usar un software \textit{de control}.
+				\item El documento final se puede generar en diversos formatos: PDF, DVI, PostScript, PNG, JPEG, etc.			\end{itemize}
+		\end{frame}
+
+	\section{Instalación}
+	\subsection{¿Comó se obtiene \LaTeX?}
+
+		\begin{frame}{¿Comó se obtiene \LaTeX?}
+			\justifying
+
+			\LaTeX\ es un \textbf{programa} que recibe una serie de \textit{comandos}
+			que incluyen la configuración del documento y el contenido del mismo.
+
+			Hay dos opciones para trabajar con \LaTeX, es decir, obtener el programa
+			necesario tenemos dos opciones:
+			\begin{itemize}
+				\item Instalación local (Trabajando en una computadora personal)
+				\item ``Instalación'' remota (Trabajando en un servicio online)
+			\end{itemize}
+		\end{frame}
+
+	\subsubsection{Instalación Local}
+		\begin{frame}{Instalación}
+			\justifying
+			
+			Se puede instalar \LaTeX\ en los principales \textbf{sistemas operativos} actuales.
+		    Existen diversos programas que nos proporcionan las herramientas de 
+			\LaTeX\ necesarias para usarlo. Entre estas tenemos:
+
+			\begin{itemize}
+				\item \href{https://miktex.org/}{MiKTeX}
+				\item \href{https://www.latex-project.org/}{The LaTeX Project}
+				\item \href{https://www.tug.org/texlive/}{TeX Live}
+				\item \href{https://www.tug.org/mactex/}{MacTeX} (MacOS)
+			\end{itemize}
+
+
+			Cada uno se instala como un programa. Se recomienda que se instale solo
+			uno de ellos. 
+		\end{frame}
+		\begin{frame}{Instalación de editor}
+			\justifying
+
+			Los comandos de \LaTeX\ se guardan en archivos de texto plano con terminació
+			\textbf{.tex}. Estos archivos son \textbf{compilados} por \LaTeX\ produciendo
+			un archivo \textbf{PDF} como resultado final. Estos archivos se pueden
+			editar con un programa sencillo, como el \textbf{bloc de notas} en Windows. Pero,
+			es recomendable usar un editor especializado de \LaTeX.
+
+			Existen diversos editores de \LaTeX, entre los cuales podemos encontrar:
+			\begin{itemize}
+				\item \href{https://www.xm1math.net/texmaker/}{TexMaker}
+				\item \href{https://www.texstudio.org/}{TeXstudio}
+			\end{itemize}
+
+			Si se desea usar un editor de texto plano, podemos usar:
+			\begin{itemize}
+				\item \href{https://code.visualstudio.com/}{Visual Studio Code} (IDE)
+				\item \href{https://www.sublimetext.com/}{Sublime Text}
+				\item \href{https://brackets.io/}{Brackets}
+				\item \href{https://notepad-plus-plus.org/}{Notepad++}
+			\end{itemize}
+		\end{frame}
+	\subsubsection{Edición remota}
+		\begin{frame}{Editores en Línea}
+			\justifying
+
+			Si no se desea instalar nada se puede optar por la opción en línea. Existen
+			páginas que nos proporcionan todas las herramientas para generar un 
+			documento de \LaTeX\ en línea. Entre estos editores podemos encontrar:
+			
+			\begin{itemize}
+				\item \href{https://www.overleaf.com/}{Overleaf}
+				\item \href{https://latexbase.com/}{\LaTeX\ Base}
+				\item \href{https://papeeria.com/}{PapeeriA}
+			\end{itemize}
+			
+			La ventaja de estas herramientas es no tener que instalar nada en las computadoras,
+			lo único que necesitaremos es un explorador de internet. Además, algunos
+			servicios prestan un servicio de almacenamiento con lo cual no nos tenemos 
+			que preocupar por hacer respaldo de nuestros archivos.
+		\end{frame}
+		\begin{frame}
+			\frametitle{Overleaf}
+			
+			\justifying
+
+			El editor en línea recomendado es \href{https://www.overleaf.com/}{Overleaf}.
+		    Tiene muchas características que son realmente útiles (aunque algunas de ellas
+			son de pago). Además cuenta con una gran base de plantillas que nos permiten
+			crear todo tipo de documentos.
+
+			Se necesita crear una cuenta (la cual es gratis) para poder usarlo. Este será el
+			editor que se usará a lo largo del curso.
+
+			Pueden registrarse en esta liga: \url{https://bit.ly/3A5d0M1}
+
+		\end{frame}
+\end{document}

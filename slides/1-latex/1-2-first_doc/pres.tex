@@ -1,0 +1,212 @@
+\documentclass[11pt]{beamer}
+% \usetheme{Copenhagen}
+\usetheme{PaloAlto}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{urlcolor=blue}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{navigation symbols}{% 
+\insertslidenavigationsymbol \insertframenavigationsymbol \insertsubsectionnavigationsymbol \insertsectionnavigationsymbol \insertdocnavigationsymbol \insertbackfindforwardnavigationsymbol \hspace{1em}%
+\usebeamerfont{footline} 	\raisebox{1.2pt}[0pt][0pt]{\insertframenumber/\inserttotalframenumber}%
+}
+\logo{\includegraphics[width=1.4cm]{fac-logo-w}} 
+\institute{Facultad de Ciencias \\ Universidad Nacional Autónoma de México} 
+\setbeamertemplate{caption}[numbered]
+
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\lstset{language=[LaTeX]TeX,
+texcsstyle=*\bf\color{blue},
+numbers=none,
+breaklines=true,
+keywordstyle=\color{darkgreen},
+literate=*{\{} {{\textcolor{darkgreen}\{}}{1}%
+			 {\}} {{\textcolor{darkgreen}\}}}{1}%
+			 {[} {{\textcolor{darkgreen}[}}{1}%
+			 {]} {{\textcolor{darkgreen}]}}{1}%
+			 {\$} {{\textcolor{darkgreen}\$}}{1},
+commentstyle=\color{red},
+frame=none,
+tabsize=2,
+backgroundcolor=\color{lightgrey}
+}
+
+\title{Introducci\'on a \LaTeX}
+\subtitle{Creando documentos}
+\author{Carlos Espinosa}
+\date{Agosto, 2022} 
+% \subject{} 
+
+\justifying
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+
+	\begin{frame}
+		\tableofcontents
+	\end{frame}
+
+	\section{Comentarios iniciales}
+	\subsection{Archivos}
+	\begin{frame}{¿Dondé/Comó se guardan los archivos?}
+		\begin{itemize}
+			\justifying
+			\item Los archivos de \LaTeX\ son guardados en archivos de texto plano.
+			\item Se deben de editar con editores de documento de texto plano, por ejemplo
+			\textbf{Bloc de notas} o cualquier editor de código.
+			\item Los editores online ya integran un editor de texto plano.
+		\end{itemize}
+	\end{frame}
+	\subsection{Código}
+	\begin{frame}{¿Comandos?}
+		\begin{itemize}
+			\item \LaTeX\ funciona a base de comandos/instrucciones. Algunos de estos
+			son indispensables para la creación de un documento.
+			\item Los comandos deben de escribirse tal cual se indican.
+			\item \LaTeX\ hace un uso intensivo de algunos símbolos: $\{$, $\}$, $\backslash$, etc.
+		\end{itemize}
+		
+		
+	\end{frame}
+
+	\section{Creando un documento}
+	\subsection{Tipo de documento}	
+
+		\begin{frame}[containsverbatim]{¿Comó se crea un documento?}
+		 	\LaTeX\ funciona diferente a otros editores de texto. Lo primero que debe 
+		 	de especificarse es el tipo de documento.
+			\begin{lstlisting}
+\documentclass{article}
+			\end{lstlisting}
+			Además debe de especificarse donde inicia y termina el documento.
+			\begin{lstlisting}
+\begin{document}
+...
+\end{document}
+			\end{lstlisting}
+			Por lo tanto el ejemplo completo es:
+			\begin{lstlisting}
+\documentclass{article}
+\begin{document}
+Hola Mundo
+\end{document}
+			\end{lstlisting}
+	    \end{frame}	
+	\begin{frame}{Ejemplos de tipos de documento}
+	\justifying
+				Un \emph{documentclass} es un estilo de documento predefinido que contiene el formato del documento deseado. Dependiendo del tipo de documento que se va a escribir se escoge la clase de documento.
+
+			\scriptsize
+			\begin{tabular}{|c|c|}
+			\hline 
+			Tipo & Descripción \\ 
+			\hline 
+			article & \begin{tabular}{@{}c@{}}Para artículos científicos, presentaciones, \\ reportes cortos, 
+			
+			documentaciones de programas, invitaciones, etc\end{tabular}
+			  \\ 
+			\hline 
+			IEEEtran & Para artículos con el formato de la IEEE \\ 
+			\hline 
+			proc & Una clase para expedientes basada en la clase article \\ 
+			\hline 
+			report & \begin{tabular}{@{}c@{}}Para reportes largos que contienen varios capítulos, \\ libros pequeños, tesis,etc 
+\end{tabular}
+			 \\ 
+			\hline 
+			book & Para libros reales \\ 
+			\hline 
+			slides & Para diapositivas \\ 
+			\hline 
+			memoir & \begin{tabular}{@{}c@{}}Basado en la clase book, con ella se puede\\ crear cualquier tipo de documento \end{tabular}
+			\\ 
+			\hline 
+			letter & Para escribir cartas \\ 
+			\hline 
+			beamer & Para escribir presentaciones \\ 
+			\hline 
+			\end{tabular} 
+				
+	\end{frame}
+	\subsection{Opciones generales}
+	\begin{frame}[containsverbatim]{Cambiando características del documento}
+		Se puede cambiar el tamaño de la fuente agregando el valor deseado en el comando inicial.
+		\begin{lstlisting}
+\documentclass[12pt]{article}
+		\end{lstlisting}
+		También se puede cambiar el tipo de papel.
+		\begin{lstlisting}
+\documentclass[letterpaper]{article}
+		\end{lstlisting}
+		Pueden haber otras opciones útiles como: 
+		\begin{lstlisting}
+\documentclass[twoside]{article}
+		\end{lstlisting}
+	\end{frame}
+	\subsection{Agregando un título}
+	\begin{frame}[containsverbatim]{Agregando información para un título}
+		\justifying
+		Podemos definir el título del documento con la instrucción:
+	    \begin{lstlisting}
+\title{Primer documento}
+		\end{lstlisting}
+		Para agregar un autor usamos:
+		\begin{lstlisting}
+\author{Alan Smithee}
+		\end{lstlisting}	
+		Si se desea incluir una fecha, se utiliza:
+		\begin{lstlisting}
+\date{Agosto, 2022}
+		\end{lstlisting}
+
+		\LaTeX\ incluirá automaticamente los datos definidos al usar el comando
+		\begin{lstlisting}
+\maketitle
+		\end{lstlisting}
+	\end{frame}
+	\begin{frame}[containsverbatim]{Agregando información para un título}
+        \begin{lstlisting}
+\documentclass{article}
+
+\title{Primer documento}
+\author{Alan Smithee}
+\date{Agosto, 2022}
+
+\begin{document}
+
+\maketitle
+
+Hola Mundo
+
+\end{document}
+		\end{lstlisting}
+	\end{frame}
+
+	\section{Comentarios finales}
+	\begin{frame}[containsverbatim]{Cosas a recordar}
+		\begin{itemize}
+			\justifying
+			\item Los comando en \LaTeX\ siempre inicial con una diagonal invertida: $\backslash$
+			\item Los argumentos de los comando siempre van entre llaves: $\{\}$
+			\item Las opciones de los comandos siempre van entre corchetes: $[]$
+			\item Los comandos más importantes de un documento de \LaTeX\ son:
+			\begin{itemize}
+				\item \lstinline{\documentclass}
+				\item \lstinline!\begin{document}!
+				\item \lstinline!\end{document}!
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+\end{document}
