@@ -1,0 +1,10 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Introducción}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Partes de una computadora}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Hardware de una computadora}{4}{0}{1}
+\beamer@sectionintoc {2}{Categorías del hardware}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Unidad de procesamiento central}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Almacenamiento}{14}{0}{2}
+\beamer@subsectionintoc {2}{3}{Entrada/Salida}{29}{0}{2}
+\beamer@sectionintoc {3}{Extra}{31}{0}{3}
+\beamer@subsectionintoc {3}{1}{MotherBoard}{31}{0}{3}
