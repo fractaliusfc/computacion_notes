@@ -1,6 +1,0 @@
-\babel@toc {spanish}{}\relax 
-\beamer@sectionintoc {1}{Introducción}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{¿Qué es una computadora?}{3}{0}{1}
-\beamer@sectionintoc {2}{Historia de las computadoras}{4}{0}{2}
-\beamer@subsectionintoc {2}{1}{Primera computadora}{4}{0}{2}
-\beamer@subsectionintoc {2}{2}{Computadoras Modernas}{8}{0}{2}
